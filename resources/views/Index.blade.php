@@ -42,7 +42,7 @@
     </div>
     <div class="table-responsive col-md-9 ">
         <h2>Student List</h2>
-        <form action="" method="post">
+
             <table class="table table-striped">
                 <thead>
                 <tr>
@@ -71,6 +71,9 @@
                     </tr>
                 @endforeach
             </table>
-        </form>
+
+
+        {{ $mains->links() }}
     </div>
+
 @endsection

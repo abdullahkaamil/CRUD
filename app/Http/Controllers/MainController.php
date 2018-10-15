@@ -4,13 +4,17 @@ namespace App\Http\Controllers;
 
 use App\main;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MainController extends Controller
 {
     public function index()
     {
-        $mains = main::all();
-        return view('index', compact('mains'));
+        //  $mains = main::all();
+       $mains = DB::table('mains')->paginate(5);
+       //$mains = main::orderBy()
+      //return view('index',['mains'=>$mains]);
+          return view('index', compact('mains'));
 
     }
 
