@@ -56,6 +56,7 @@ function SaveEvents() {
             var nameValue = e.target.parentNode.parentNode.firstChild.nextSibling.nextSibling.value;
             var surnameValue = e.target.parentNode.parentNode.firstChild.nextSibling.nextSibling.nextSibling.nextSibling.value;
             items[index] = [idValue, nameValue, surnameValue];
+            fucntion();
         });
     });
 }
