@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use app\main;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('/');
+        $mains = DB::table('mains')->paginate(5);
+        return view('index', compact('mains'));
+        
     }
 }

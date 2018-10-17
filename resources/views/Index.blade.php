@@ -1,6 +1,7 @@
-@extends('layouts.master')
+@extends('layouts.app')
 @section('content')
     <div class="table-responsive col-md-9 ">
+        <br>
         <h2>Student Entry</h2>
         @if(session()->has('msg'))
             <div class="alert alert-success">
@@ -42,38 +43,46 @@
     </div>
     <div class="table-responsive col-md-9 ">
         <h2>Student List</h2>
-
-            <table class="table table-striped">
-                <thead>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>No</th>
+                <th scope="col"> Name</th>
+                <th scope="col"> Surname</th>
+                <th>&emsp;</th>
+                <th>&emsp;</th>
+            </tr>
+            </thead>
+            @foreach( $mains as $main)
                 <tr>
-                    <th>No</th>
-                    <th scope="col"> Name</th>
-                    <th scope="col"> Surname</th>
-                    <th>&emsp;</th>
-                    <th>&emsp;</th>
+                    <td> {{  $main->id  }}</td>
+                    <td> {{  $main->s_name  }}</td>
+                    <td> {{  $main->s_surname  }}</td>
+                    <td style="width: 3em">
+
+                        {{--<a href="{{ route('main.update',$main->id) }}" class="btn badge-warning" id="edit"> Edit</a>--}}
+                        <button class="btn badge-warning edit" id="Edit" onclick="EditEvent();"> Edit</button>
+
+                    </td>
+                    <form method="post" action="{{ route('main.update2',$mains) }}">
+                    <td style="width: 3em">
+                        <button class="btn badge-pill save" id="Save" onclick="SaveEvents();" type="submit"> SAve</button>
+                    </td>
+                    </form>
+                    <td style="width: 3em">
+                        <form action="{{  route('main.destroy',$main->id) }}" method="post">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn btn-danger"> Delete</button>
+                        </form>
+                    </td>
                 </tr>
-                </thead>
-                @foreach( $mains as $main)
-                    <tr>
-                        <td> {{  $main->id  }}</td>
-                        <td> {{  $main->s_name  }}</td>
-                        <td> {{  $main->s_surname  }}</td>
-                        <td style="width: 3em">
-                            <a href="{{ route('main.update',$main->id) }}" class="btn badge-warning"> Edit</a>
-                        </td>
-                        <td style="width: 3em">
-                            <form action="{{  route('main.destroy',$main->id) }}" method="post">
-                                @csrf
-                                @method('delete')
-                                <button type="submit" class="btn btn-danger"> Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
-            </table>
-
-
+            @endforeach
+        </table>
         {{ $mains->links() }}
     </div>
-
 @endsection
+<script>
+
+
+</script>

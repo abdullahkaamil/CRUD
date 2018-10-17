@@ -43,10 +43,7 @@ class MainController extends Controller
     public function edit($id)
     {
         $mains = main::find($id);
-        //dd($mains['s_surname']);
         return view('edit', compact('mains'));
-
-        //return view('edit' , compact('update') ,$mains );
     }
 
     public function update(Request $request, $id)
