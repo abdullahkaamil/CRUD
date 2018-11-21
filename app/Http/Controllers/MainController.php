@@ -12,8 +12,6 @@ class MainController extends Controller
     {
         //  $mains = main::all();
        $mains = DB::table('mains')->paginate(5);
-       //$mains = main::orderBy()
-      //return view('index',['mains'=>$mains]);
           return view('index', compact('mains'));
 
     }
@@ -43,7 +41,10 @@ class MainController extends Controller
     public function edit($id)
     {
         $mains = main::find($id);
+        //dd($mains['s_surname']);
         return view('edit', compact('mains'));
+
+        //return view('edit' , compact('update') ,$mains );
     }
 
     public function update(Request $request, $id)

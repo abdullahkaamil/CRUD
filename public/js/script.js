@@ -6,9 +6,9 @@ function EditEvent() {
     var btnEdits = document.getElementsByClassName("edit");
     Array.from(btnEdits).forEach((x) => {
         x.addEventListener("click", (e) => {
-            if (editStatus) {
-                return;
-            }
+        //    if (editStatus) {
+         //       return;
+         //   }
             editStatus = true;
             editIndex = e.target.id;//keep the index for the verification in the Save opreation
 
@@ -39,24 +39,37 @@ function EditEvent() {
     });
 }
 
-function SaveEvents() {
+function SaveEvents(route) {
     var btnSaves = document.getElementsByClassName("save");
+
     Array.from(btnSaves).forEach((x) => {
         x.addEventListener("click", (e) => {
-           if (!editStatus) {
-                return;
-            }//verify the editStatus
+         //  if (!editStatus) {
+           //     return;
+         //   }//verify the editStatus
             let index = e.target.id;
 
            // if (index != editIndex) {
           //     return;
        //   }//verify the current item
 
-            var idValue = e.target.parentNode.parentNode.firstChild;
-            var nameValue = e.target.parentNode.parentNode.firstChild.nextSibling.nextSibling.value;
-            var surnameValue = e.target.parentNode.parentNode.firstChild.nextSibling.nextSibling.nextSibling.nextSibling.value;
+            var idValue = e.target.parentNode.parentNode.firstChild.firstChild.value;
+            var nameValue = e.target.parentNode.parentNode.firstChild.nextSibling.nextSibling.firstChild.value;
+            var surnameValue = e.target.parentNode.parentNode.firstChild.nextSibling.nextSibling.nextSibling.nextSibling.firstChild.value;
             items[index] = [idValue, nameValue, surnameValue];
-            fucntion();
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    window.location.reload();
+                }
+            };
+
+            var tmp = "update?id="+ idValue
+                + "&s_name=" + nameValue
+                + "&s_surname=" + surnameValue;
+
+            xhttp.open("GET", tmp, true);
+            xhttp.send();
         });
     });
 }

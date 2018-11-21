@@ -28,4 +28,9 @@ class HomeController extends Controller
         return view('index', compact('mains'));
         
     }
+    public function add()
+    {
+        return view('home');
+    }
+
 }

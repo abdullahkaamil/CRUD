@@ -1,11 +1,11 @@
 @extends('layouts.app')
 @section('content')
-    <div class="col-md-6">
+
         <div class="card">
             <div class="card-header">
                 Student Update form
             </div>
-            <div class="card-body">
+            <div class="card-content card-content-padding">
                 <form method="post" action="{{ route('main.update2',$mains['id']) }}">
                     @method('post')
                     @csrf
@@ -17,10 +17,11 @@
                         <label for="Surname">Surname :</label>
                         <input type="text" class="form-control" name="s_surname" value={{ $mains['s_surname'] }} />
                     </div>
-                    <button type="submit" class="btn btn-success ">Update</button>
+                    <div class="card-footer">
+                    <button type="submit" class="button button-big button-green">Update</button>
+                    </div>
                 </form>
             </div>
         </div>
-    </div>
 
 @endsection
