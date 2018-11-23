@@ -5,7 +5,7 @@
         <br>
         @guest
         @endguest
-        <div class="block-title"> Student Entry</div>
+        <div class="block-title"> <strong>Student Entry</strong></div>
         @if(session()->has('msg'))
             <div class="alert alert-success">
                 {{ session()->get('msg') }}
@@ -45,9 +45,11 @@
                     </div>
                 </li>
             </ul>
-            <p class="buttons-row">
-                <button type="submit" class="button button-raised">Save</button>
-            </p>
+            <br>
+            <div class="buttons-row" style="margin-left: 139px;">
+                    <div class="center"><button type="submit" class="button button-raised">Save</button></div>
+                <div class="center"><a href="{{url ('/index') }}" class="link external button button-raised">Back</a></div>
+            </div>
 
         </form>
 
